@@ -1,7 +1,6 @@
 =simple_form_for @pin, html: { multipart: true} do |f| 
   - if @pin.errors.any? 
     #errors
-  %h2
     =pluralize(@pin.errors.count, "error")
     "prevented" this pin from saving
   %ul
@@ -9,9 +8,15 @@
       %li = msg
 
     .form-group
+    = f.input :image, input_html:{ class: 'form-control'}
+
+    .form-group
     = f.input :title, input_html:{ class: 'form-control'}
 
     .form-group
     = f.input :description, input_html:{ class: 'form-control'}
     .form-group
-  = f.button :submit, class: 'btn btn-primary'
+    = f.button :submit, class: 'btn btn-primary'
+    %br 
+      = link_to 'Back', root_path
+      
